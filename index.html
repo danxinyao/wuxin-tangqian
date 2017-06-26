@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>切割轮播图</title>
+        <style>
+			*{margin:0;padding;0;list-style: none;text-decoration: none;}
+			body{
+				background: url(images/bg.jpg);
+				background-position: cover ;
+			}
+		.box{
+			width: 560px;
+			height: 300px;
+			margin: 100px auto;
+			border: 1px solid #CCC;
+			position: relative;
+		}
+		ul{
+			width: 300px;
+		}
+		li {
+			position: absolute;
+			top: 0;
+			width: 112px;
+			height: 300px;
+			transition: transform 1s;
+			transform-style: preserve-3d;
+		}
+		li div {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left:0;
+		}
+		li div:nth-child(1){
+			background: url(images/1.png) no-repeat;
+			transform: rotateX(0deg) translateZ(150px);
+		}
+		li div:nth-child(2){
+			background: url(images/2.png) no-repeat;
+			transform: rotateX(-90deg) translateZ(150px);
+
+		}
+		li div:nth-child(3){
+			background: url(images/3.png) no-repeat;
+			transform: rotateX(-180deg) translateZ(150px);
+
+		}
+		li div:nth-child(4){
+			background: url(images/4.png) no-repeat;
+			transform: rotateX(-270deg) translateZ(150px);
+
+		}
+		span{
+			position: absolute;
+			width: 50px;
+			height: 50px;
+			top:50%;
+			font-size: 40px;
+			font-weight: 700;
+			background-color:rgba(255,255,255,0.5);
+			line-height: 50px;
+			text-align: center;
+			margin-top: -25px;
+		}
+		.next{
+			right: 0;
+		}
+		 h1 a{
+		 	font-size: 40px;
+        	margin:10px auto;
+        	color:red;
+        	text-align:center;
+        	display:block;
+        }
+        .content {
+        	margin-bottom: 100px;
+        }
+        .content h1 {
+        	text-align: center;
+        	margin: 10px; 
+        	color: yellow;
+        	font-weight: bold;
+        }
+        .content img {
+        	display: block;
+        	margin: 0 auto;
+        }
+        .prev, .next {
+        	display: none;
+        }
+        </style>
+        <script src="js/jquery-1.11.3.min.js"></script>
+        <script>
+        $(function(){
+        	var num = 0;
+        	var timer;
+			$("li").each(function(index,e){
+				$(this).css("left",560/5*index);
+				$(this).children('div').css("background-position",-560/5*index+'px 0px');
+				$(this).css("transition-delay",index*0.1+"s");
+			});
+			
+			$(".next").on("click",function() {
+				num++;
+				clearInterval(timer);
+				$("li").css("transform","rotateX("+num*90+"deg)");
+				setInterval(timer);
+			});
+			$(".prev").on("click",function() {
+				num--;
+				clearInterval(timer);
+				$("li").css("transform","rotateX("+num*90+"deg)");
+				setInterval(timer);
+				
+			});
+			timer=setInterval(function(){
+				num++;
+				$("li").css("transform","rotateX("+num*90+"deg)");
+			},2000);
+	
+        })
+
+        </script>
+    </head>
+    <body>
+    <h1> <a href="javascript:;">好可爱的女孩</a></h1>
+    <div class="box">
+    	<ul>
+    	<li>
+    		<div></div>
+    		<div></div>
+    		<div></div>
+    		<div></div>
+    	</li>
+    	<li>
+    		<div></div>
+    		<div></div>
+    		<div></div>
+    		<div></div>
+    	</li>
+    	<li>
+    		<div></div>
+    		<div></div>
+    		<div></div>
+    		<div></div>
+    	</li>
+    	<li>
+    		<div></div>
+    		<div></div>
+    		<div></div>
+    		<div></div>
+    	</li>
+    	<li>
+    		<div></div>
+    		<div></div>
+    		<div></div>
+    		<div></div>
+    	</li>
+    	</ul>
+		<audio src="like.mp3" autoplay loop="loop"></audio>
+		<span class="prev"><</span>
+		<span class="next">></span>
+	</div>
+	<div class="content">
+		<h1>。。。好想你。。。</h1>
+		<img src="images/11.jpg" alt="">
+		<h1>弱水三千，</h1>
+		<img src="images/15.jpg" alt="">
+		<h1>只取一瓢饮。</h1>
+		<img src="images/12.jpg" alt="">
+		<h1>娇玫万朵，</h1>
+		<img src="images/13.jpg" alt="">
+		<h1>独摘一枝怜</h1>
+		<img src="images/14.jpg" alt="">
+	</div>
+    </body>
+</html>
